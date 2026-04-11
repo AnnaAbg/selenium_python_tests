@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+
 def test_data_picker():
     driver = webdriver.Chrome()
 
@@ -15,14 +16,15 @@ def test_data_picker():
         data_picker.clear()
         data_picker.send_keys("04/10/2026")
 
-        # current_date = data_picker.get_attribute("value")
+        current_date = data_picker.get_attribute("value")
 
         # print(f"Current date: {current_date}")
 
-        # assert current_date == "04/10/2026"
-        assert data_picker.get_attribute("value") == "04/10/2026"
+        expected_date = "04/10/2026"
+        assert current_date == expected_date, \
+             f"Expected {expected_date}, got {current_date}"  # prints ONLY on failure
 
-        # print("✓ Date is set up correctly!")
+        print("✓ Date is set up correctly!")
 
     finally:
         driver.quit()
@@ -44,5 +46,18 @@ Comments
 # assert "login" in current_url
 # ✔ form validation (strict)
 # assert username == "admin" 
-"""
 
+🧠 Rule 
+🎯 Use == for:
+dates
+numbers
+IDs
+exact form values
+API responses
+
+🔎 Use in for:
+URLs
+long text
+messages
+titles
+"""
