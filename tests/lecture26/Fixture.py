@@ -1,9 +1,12 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+
 
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
+    wait = WebDriverWait(driver, 10)
     yield driver # This provides the driver to the test
     driver.quit() # This runs AFTER the test finishes (Teardown)
 

@@ -278,3 +278,14 @@ def test_color(driver):
     assert color == "#ff0000" == color
 
     time.sleep(2)
+
+
+# Если хочешь “правильно” обновить UI
+#
+# Иногда просто value недостаточно + нужно триггернуть change:
+#
+# driver.execute_script("""
+#     arguments[0].value = '#ff0000';
+#     arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+#     arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+# """, color_picker)
